@@ -1,0 +1,44 @@
+
+<html >
+
+
+
+
+<head>
+
+<title>VAPPP Editor</title>
+
+
+<style type="text/css" media="all">
+	
+	@import "css/main.css";
+	@import "css/widgEditor.css";
+</style>
+
+<script type="text/javascript" src="scripts/widgEditor.js"></script>
+
+</head>
+
+
+
+<body>
+		<form  onsubmit="alert('Your submitted HTML was:\n\n' + document.getElementById('noise').value); return false;">
+			<fieldset>
+				<label for="noise">
+					VAPPP Editor
+				</label>
+				<input type="button"  name="share" value="Share" style="position: relative;left: 80%;top: -5px; border-radius: 10%">
+				<textarea id="noise" name="noise" class="widgEditor nothing"><i>Start Typing here......</i></textarea>
+			</fieldset>
+			<fieldset class="submit">
+				<input type="submit" value="Save File" />
+			</fieldset>
+		</form>
+	</div>
+<!-- END content -->
+</body>
+
+
+
+
+</html>
