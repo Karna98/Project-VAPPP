@@ -1,0 +1,16 @@
+{
+    "name": "nodekb",
+    "version": "1.0.0",
+    "description": "simple knowledge file",
+    "main": "Server.js",
+    "scripts": {
+        "start": "node Server.js"
+    },
+    "repository": {},
+    "author": "akshay",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.16.4",
+        "socket.io": "^2.2.0"
+    }
+}

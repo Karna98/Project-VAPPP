@@ -1,44 +1,143 @@
-
-<html >
-
-
-
-
-<head>
-
-<title>VAPPP Editor</title>
-
-
-<style type="text/css" media="all">
-	
-	@import "css/main.css";
-	@import "css/widgEditor.css";
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Client</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script> 
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+     </head>
+<style>
+      #notepad{
+        height:500px;
+        width:500px;
+        font-size: 14px;
+        color: brown;
+       }
 </style>
+    <body style="background-color:rgb(236, 213, 229)">
+        <div>
+            <hr>
+            <center><h4>Document Name</h4> </center>
+            <center><input id="myFile" type="file" style="padding:0.5%; float: left"/>
+            <input id="doc_name" type="text" style="padding:0.5% ; width: 20%"/>
+            <button type="button" value="save" id="save" style="float:right ; padding:0.5%; width: 14%">Save</button></center>
+            <hr>
+        </div>
+        <div>
+            <center><textarea id="notepad" style="height:50rem ; width:100rem"></textarea><br/></center>
+        </div>
 
-<script type="text/javascript" src="scripts/widgEditor.js"></script>
+        <script>
+            
 
+            function saveTextAsFile() {
+                // var textToWrite = document.getElementById('notepad').innerHTML;
+                var textToWrite = $('#notepad').val()
+                var textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
+                var fileNameToSaveAs = $('#doc_name').val();
+
+                var downloadLink = document.createElement("a");
+                downloadLink.download = fileNameToSaveAs;
+                downloadLink.innerHTML = "Download File";
+                if (window.webkitURL != null) {
+                    // Chrome allows the link to be clicked without actually adding it to the DOM.
+                    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+                } else {
+                    // Firefox requires the link to be added to the DOM before it can be clicked.
+                    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+                    downloadLink.onclick = destroyClickedElement;
+                    downloadLink.style.display = "none";
+                    document.body.appendChild(downloadLink);
+                }
+                downloadLink.click();
+            }
+            var button = document.getElementById('save');
+            button.addEventListener('click', saveTextAsFile);
+
+            function destroyClickedElement(event) {
+                // remove the link from the DOM
+                document.body.removeChild(event.target);
+            }
+
+            // $(function () {
+            //     var file = document.getElementById("myFile").files[0];
+            //     var reader = new FileReader();
+            //     reader.onload = function (e) {
+            //         var textArea = document.getElementById("notepad");
+            //         textArea.value = e.target.result;
+            //     };
+            //     reader.readAsText(file);
+            // });
+            
+        
+            $(function () {
+                var socket = io.connect('http://10.0.1.193:3000',{'sync disconnect on unload':false}); 
+
+                var room = "room1";
+                socket.on('connect', function() {
+                socket.emit('room', room);
+                });
+
+                //receive character from server
+                socket.on('server_character',function(content){
+                    console.log('From Server:'+ content);
+                    $('#notepad').val(content);
+                    // document.getElementById('notepad').innerHTML=content; 
+                });
+
+                //For each typed character
+                $('#notepad').on('keyup',function(){
+                    var character= $('#notepad').val();
+                    //send character to servers
+                    socket.emit('client_character',{buffer:character});
+                    console.log('To Server:'+ {buffer:character} );
+                });
+            });
+            window.onload = function() {
+                var fileInput = document.getElementById('myFile');
+
+                fileInput.addEventListener('change', function(e) {
+                    var file = fileInput.files[0];
+                    var textType = /text.*/;
+
+                    if (1) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            document.getElementById('notepad').innerText = reader.result;
+                        }
+
+                        reader.readAsText(file);	
+                    }
+                });
+            }  
+        </script>
+
+    </body>
+    </html>
+
+    <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>remote</title>
 </head>
+<body class="container">
+
+<h1>sdsiufghaf</h1>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script> 
 
 
 
-<body>
-		<form  onsubmit="alert('Your submitted HTML was:\n\n' + document.getElementById('noise').value); return false;">
-			<fieldset>
-				<label for="noise">
-					VAPPP Editor
-				</label>
-				<input type="button"  name="share" value="Share" style="position: relative;left: 80%;top: -5px; border-radius: 10%">
-				<textarea id="noise" name="noise" class="widgEditor nothing"><i>Start Typing here......</i></textarea>
-			</fieldset>
-			<fieldset class="submit">
-				<input type="submit" value="Save File" />
-			</fieldset>
-		</form>
-	</div>
-<!-- END content -->
+ 
 </body>
 
+</html> -->
 
-
-
-</html>
