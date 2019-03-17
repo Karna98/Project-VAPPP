@@ -36,29 +36,27 @@ $ cd Project-VAPPP
 $ cd Python
 $ python3 app.py
 ```
-<br>
-<p align="center">
-  <img src="Image/App_Home.png" width="250" title="Home Screen">
-</p>
-<br>
-**To Start Collaboration**
-<br>
-Click on Start Collaboration
-<br>
-<p align="center">
-  <img src="Image/App_Create.png" width="250" title="Start Collaboration Screen">
-</p>
+
+### To Start Collaboration
+<p>
+Click on 'Start Collaboration'
 <br>
 then 
 Click 'Proceed'
-**To Join Collaboration**
+</p>
+
+### To Join Collaboration
+<p>
 Click on 'Join Collaboration'
 <br>
-<p align="center">
-  <img src="Image/App_Join.png" width="250" title="Join Collaboration Screen">
-</p>
-<br>
-<p>
 Enter IP address (server PC IP address) 
 </p>
   
+## Screenshots
+<p align="center">
+  <img src="Image/App_Home.png" width="250" title="Home Screen">
+  <img src="Image/App_Create.png" width="250" title="Start Collaboration Screen">
+  <img src="Image/App_Join.png" width="250" title="Join Collaboration Screen">
+  <br>
+  <img src="Image/pd.gif" title="Webpage Screen">
+</p>
