@@ -4,33 +4,36 @@ What is Project-VAPPP (Offline Share)?
 Project-VAPPP enables a team to quickly collaborate on the same document without the need of Internet Connection. However, they need to be connected on the same network.
 
 
-
-
 ## On Windows
 
 clone the repository in xampp/htdocs
 ### Installation
-'''
 Firstly install Node.js
-cd Socket
-npm install
-'''
 
+```sh
+$ cd Socket
+$ npm install
+```
+<hr>
 ## On Ubuntu
 clone the repository in '/var/html/www'
 
 ### Installation
-Firstly install Node.js
-'''
-cd Socket
-npm install
-'''
+Requirements :
+* Node.js
+* Python Tkinter
+* Socket.io 
+* Javascript
+```sh
+$ cd Socket
+$ npm install 
+```
 ### Running:
-'''
-cd Project-VAPPP 
-cd Python
-python3 app.py
-'''
+```sh 
+$ cd Project-VAPPP
+$ cd Python
+$ python3 app.py
+```
 <br>
 <p align="center">
   <img src="Image/App_Home.png" width="250" title="Home Screen">
