@@ -1,32 +1,40 @@
 # Project-VAPPP
+What is Project-VAPPP (Offline Share)?
 
-On Ubuntu
-clone the repository in /var/html/www
-
-Installation
-Firstly install Node.js
-//cd Socket
-//npm install 
-//npm install express --save
-//npm install socket.io --save
-
-
-Running:
-go to the main folder(Project-VAPPP) in terminal
-
-to start collaboration (put following commands in terminal)
-cd Python
-python3 app.py
-enter your ip address
-
-to join collaboration 
-cd Python 
-python3 app.py
-Enter the ip address
+Project-VAPPP enables a team to quickly collaborate on the same document without the need of Internet Connection. However, they need to be connected on the same network.
 
 
 
-On Windows
+
+## On Windows
 
 clone the repository in xampp/htdocs
-install Node.js
+
+Firstly install Node.js
+cd Socket
+npm install
+
+## On Ubuntu
+clone the repository in '/var/html/www'
+
+### Installation
+Firstly install Node.js
+cd Socket
+npm install
+
+### Running:
+cd Project-VAPPP 
+cd Python
+python3 app.py
+
+-- To Start Collaboration
+Click on 'Start Collaboration'
+then 
+Click 'Proceed'
+
+-- To Join Collaboration 
+Click on 'Join Collaboration'
+enter ip address (server PC IP address)
+
+
+
